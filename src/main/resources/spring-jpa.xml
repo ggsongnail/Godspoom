@@ -11,7 +11,7 @@
      http://www.springframework.org/schema/data/jpa 
      http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 
-
+	<context:component-scan base-package="com.spoom.service"/>
 	<context:property-placeholder location="classpath:jdbc.properties" />
 	
 	<bean id="dataSource"
@@ -24,6 +24,7 @@
 	
 	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
 		p:dataSource-ref="dataSource" p:jpaVendorAdapter-ref="jpaAdapter">
+		<!-- 扫描domain，用于协助动态生成repository代理实现，此处添加后可不用添加persistenceUnit对应的orm.xml-->
 		<property name="packagesToScan" value="com.spoom.entity"/>
 		<property name="loadTimeWeaver">
 			<bean class="org.springframework.instrument.classloading.InstrumentationLoadTimeWeaver" />
@@ -35,9 +36,11 @@
 
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"
 		p:entityManagerFactory-ref="entityManagerFactory" />
-		
+	
+	<!-- 扫描respositroy,通过它继承的Respository或者Respository某个子接口并生成具有其相应属性的动态代理实现 -->	
 	<jpa:repositories base-package="com.spoom.respository"  entity-manager-factory-ref="entityManagerFactory" 
  		transaction-manager-ref="transactionManager"/>
+ 	
  		
-	<context:component-scan base-package="com.spoom.service"/>
+
 </beans>

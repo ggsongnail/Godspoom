@@ -7,37 +7,38 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
 @Entity
-@Table(name="account")
-public class Account implements Serializable{
-	private static final long serialVersionUID = 1L;
+@Table(name="killed")
+public class Killed implements Serializable{
 	@Id
 	@Column(name="id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	private String name;
-	private double money;
+	@ManyToOne
+	private User user;
+	@ManyToOne
+	private Product product;
 	public int getId() {
 		return id;
 	}
-	
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getName() {
-		return name;
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
+	public Product getProduct() {
+		return product;
+	}
+	public void setProduct(Product product) {
+		this.product = product;
 	}
 	
-	public void setName(String name) {
-		this.name = name;
-	}
-	public double getMoney() {
-		return money;
-	}
-	
-	public void setMoney(double money) {
-		this.money = money;
-	}
 	
 }

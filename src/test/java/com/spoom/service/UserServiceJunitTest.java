@@ -6,16 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.spoom.respository.AccountDao;
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:spring-jpa.xml")
-public class AccountServiceJunitTest {
+public class UserServiceJunitTest {
 	@Autowired
-	private AccountService accountService;
+	private UserService userService;
 	
 	@Test
 	public void testFindAll(){
-		System.out.println(accountService.findAll().size());
+		System.out.println(userService.findAll().size());
 	}
 }

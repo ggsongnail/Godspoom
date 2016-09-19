@@ -16,7 +16,7 @@ public class UserServiceJunitTest {
 	@Autowired
 	private UserService userService;
 	
-	@Test
+	
 	public void testFindAll(){
 		System.out.println(userService.findAll().size());
 	}
@@ -28,7 +28,7 @@ public class UserServiceJunitTest {
 		userService.save(user);
 	}
 	
-	
+	@Test
 	public void testInsert(){
 		User user = new User();
 		user.setName("Jony");

@@ -40,4 +40,5 @@
     SET FOREIGN_KEY_CHECKS=1;
 来启动外键约束.
 
+test git
 

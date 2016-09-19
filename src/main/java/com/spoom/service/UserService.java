@@ -17,7 +17,23 @@ public class UserService {
 	@Transactional
 	public List<User> findAll() {
 		List<User> users = userDao.findAll();
-		System.out.println(users.get(0).getKilleds().get(0).getId());
+		System.out.println(users.get(0).getKilleds());
 		return users;
+	}
+	
+	public User findById(int id){
+		return userDao.findOne(id);
+	}
+	
+	public void save(User user){
+		userDao.save(user);
+	}
+	
+	@Transactional
+	public void testTransactionRollBack(int id){
+		User user = userDao.findOne(id);
+		user.setName("bobo");
+		userDao.save(user);
+		int i = 2/0;
 	}
 }

@@ -13,6 +13,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Version;
+
+import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name="user")
@@ -21,6 +24,8 @@ public class User implements Serializable{
 	@Id
 	@Column(name="id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	//@GeneratedValue(generator = "uuid")
+    //@GenericGenerator(name = "uuid", strategy = "org.hibernate.id.UUIDGenerator")
 	private int id;
 	private String name;
 	private String password;
@@ -28,7 +33,9 @@ public class User implements Serializable{
 	private Date createDate;
 	private Date updateDate;
 	private Date deleteDate;
-	private int status;
+	private Integer status;
+	@Version
+	private Integer version;
 	@OneToMany(cascade = {CascadeType.MERGE},fetch=FetchType.LAZY,mappedBy ="user") 
 	private List<Killed> killeds;
 	
@@ -74,11 +81,18 @@ public class User implements Serializable{
 	public void setDeleteDate(Date deleteDate) {
 		this.deleteDate = deleteDate;
 	}
-	public int getStatus() {
+	
+	public Integer getStatus() {
 		return status;
 	}
-	public void setStatus(int status) {
+	public void setStatus(Integer status) {
 		this.status = status;
+	}
+	public Integer getVersion() {
+		return version;
+	}
+	public void setVersion(Integer version) {
+		this.version = version;
 	}
 	public List<Killed> getKilleds() {
 		return killeds;
@@ -86,5 +100,4 @@ public class User implements Serializable{
 	public void setKilleds(List<Killed> killeds) {
 		this.killeds = killeds;
 	}
-	
 }

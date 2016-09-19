@@ -31,6 +31,13 @@
 	modifying the target class byte code to apply to any kind of method call. 
 	AspectJ weaving requires spring-aspects.jar in the classpath as well as load-time weaving (or compile-time weaving) enabled
 
-Test git
+事务的隔离级别     @version
+
+    SET FOREIGN_KEY_CHECKS=0;
+来禁用外键约束.
+ 
+之后再用
+    SET FOREIGN_KEY_CHECKS=1;
+来启动外键约束.
 
 

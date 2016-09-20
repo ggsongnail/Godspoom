@@ -15,10 +15,14 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name="user")
+@DynamicInsert(true)
+@DynamicUpdate(true)
 public class User implements Serializable{
 	private static final long serialVersionUID = 1L;
 	@Id

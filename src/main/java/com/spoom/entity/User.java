@@ -19,6 +19,8 @@ import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.GenericGenerator;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="user")
 @DynamicInsert(true)
@@ -41,6 +43,7 @@ public class User implements Serializable{
 	@Version
 	private Integer version;
 	@OneToMany(cascade = {CascadeType.MERGE},fetch=FetchType.LAZY,mappedBy ="user") 
+	@JsonIgnore
 	private List<Killed> killeds;
 	
 	public int getId() {

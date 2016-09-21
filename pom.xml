@@ -40,32 +40,38 @@
 		</dependencies>
 	</dependencyManagement>
 	<dependencies>
+		<!-- Spring Data Jpa-->
 		<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-jpa</artifactId>
 		</dependency>
+		
+		<!-- Spring MVC -->
 		<dependency>
 			<groupId>org.springframework</groupId>
-			<artifactId>spring-test</artifactId>
-			<version>${spring.version}</version>
+			<artifactId>spring-webmvc</artifactId>
 		</dependency>
-		<!--transaction settings model=aspect使用 -->
+		
+		<!-- AspectJ -->
+		<!-- can use in the transation configuration when the model is aspect-->
 		<dependency>
 		    <groupId>org.springframework</groupId>
 		    <artifactId>spring-aspects</artifactId>
-		    <version>${spring.version}</version>
 		</dependency>
 		<dependency>
 		    <groupId>org.aspectj</groupId>
 		    <artifactId>aspectjweaver</artifactId>
 		    <version>1.8.9</version>
 		</dependency>
+		
+		<!-- Hibernate -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
 			<version>5.1.0.Final</version>
 		</dependency>
-		<!-- log -->
+		
+		<!-- Logging -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
@@ -73,7 +79,7 @@
 		</dependency>
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
-			<artifactId>logback-core</artifactId><!-- 实现 slf4j接口规范 -->
+			<artifactId>logback-core</artifactId>
 			<version>1.1.1</version>
 		</dependency>
 		<dependency>
@@ -81,21 +87,31 @@
 			<artifactId>logback-classic</artifactId>
 			<version>1.1.1</version>
 		</dependency>
+
+		<!-- Mysql -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>${mysql.version}</version>
 		</dependency>
+				
+		<!-- Test -->
 		<dependency>
-		    <groupId>commons-lang</groupId>
-		    <artifactId>commons-lang</artifactId>
-		    <version>2.1</version>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.12</version>
 			<scope>test</scope>
+		</dependency>
+		
+		<!-- Common Jar -->
+		<dependency>
+		    <groupId>commons-lang</groupId>
+		    <artifactId>commons-lang</artifactId>
+		    <version>2.1</version>
 		</dependency>
 	</dependencies>
 	<build>

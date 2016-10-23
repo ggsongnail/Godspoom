@@ -37,6 +37,10 @@
 	
 	<mvc:annotation-driven/>
 	
+	<mvc:default-servlet-handler/>
+	
+	<mvc:view-controller path="/" view-name="redirect:/user"/>
+	
 	<!-- 定义JSP文件的位置 --> 
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/views/"/>

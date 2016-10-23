@@ -10,11 +10,11 @@ import com.spoom.entity.User;
 import com.spoom.respository.UserDao;
 
 @Service
+@Transactional
 public class UserService {
 	@Autowired
 	private UserDao userDao;
 
-	@Transactional
 	public List<User> findAll() {
 		List<User> users = userDao.findAll();
 		System.out.println(users.get(0).getKilleds());
@@ -29,7 +29,6 @@ public class UserService {
 		userDao.save(user);
 	}
 	
-	@Transactional
 	public void testTransactionRollBack(int id){
 		User user = userDao.findOne(id);
 		user.setName("bobo");

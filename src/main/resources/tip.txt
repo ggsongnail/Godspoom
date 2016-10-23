@@ -42,3 +42,20 @@
 
 test git
 
+User.java
+@OneToMany(cascade = {CascadeType.ALL},mappedBy = "user")
+private List<Killed> killeds;
+
+==save(user)的时候可以级联操作Killed的对象save
+
+Killed.java
+@ManyToOne
+@JoinColumn(name="user_id")
+private User user;
+
+==save(killed)的时候，user必须是已持久化的对象，否则报错：object references an unsaved transient instance
+     如果你在注解上加上CascadeType.ALL 持久化的对象user 在save killed时报错；MEGER是成功的，但new User报错；
+     
+     
+mvn install:install-file -DgroupId=net.sf.ehcache -DartifactId=ehcache -Dversion=2.10.3 -Dpackaging=jar -Dfile=E:\ehcache-2.10.3.jar
+
